@@ -12,10 +12,10 @@ import (
 // An EntriesFile represents a file containing compressed log entries.
 type AlexaRank struct {
 	init bool
-	m map[string]int64
+	m    map[string]int64
 }
 
-func (a* AlexaRank) GetRank(host string) (rank int64, err error) {
+func (a *AlexaRank) GetRank(host string) (rank int64, err error) {
 	if a.m == nil {
 		return 0, errors.New("Alexa: Must initialize before getting rank")
 	}
@@ -26,7 +26,7 @@ func (a* AlexaRank) GetRank(host string) (rank int64, err error) {
 	return val, nil
 }
 
-func (a* AlexaRank) Init(fileName string) {
+func (a *AlexaRank) Init(fileName string) {
 	csv_in, err := os.Open(fileName)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to open Alexa top 1M file: %s\n", err)
